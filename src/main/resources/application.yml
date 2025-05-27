@@ -1,0 +1,43 @@
+spring:
+    application:
+        name: testservice
+    profiles:
+        group:
+            local: local
+            dev: dev
+---
+server:
+    port: 8080
+spring:
+    config:
+        activate:
+            on-profile: local
+    datasource:
+        url: jdbc:mysql://localhost:3306/db_grib_iot
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: root
+        password: grib12#$
+    jpa:
+        database: mysql
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+        hibernate:
+            ddl-auto: none
+        show-sql: true
+---
+server:
+    port: 9998
+spring:
+    config:
+        activate:
+            on-profile: dev
+    datasource:
+        url: jdbc:mysql://192.168.0.240:3306/aiot_dev
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: grib
+        password: grib12!@
+    jpa:
+        database: mysql
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+        hibernate:
+            ddl-auto: none
+        show-sql: true
