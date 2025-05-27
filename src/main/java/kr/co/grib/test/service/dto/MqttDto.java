@@ -15,4 +15,5 @@ public class MqttDto {
     private String token;
     private String request;
     private String param;
+    private String deviceId;
 }
