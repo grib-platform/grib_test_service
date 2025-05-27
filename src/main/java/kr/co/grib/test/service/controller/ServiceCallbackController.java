@@ -20,7 +20,7 @@ public class ServiceCallbackController {
 	@PostMapping("/callback")
 	public void serviceCallback(@RequestBody MqttDto param) {
 		try{
-			MqttDto mqttJson = new MqttDto(param.getToken(), param.getRequest(), param.getParam());
+			MqttDto mqttJson = new MqttDto(param.getToken(), param.getRequest(), param.getParam(), param.getDeviceId());
 
 			ObjectMapper objectMapper = new ObjectMapper();
 			String jsonString = objectMapper.writeValueAsString(mqttJson);
