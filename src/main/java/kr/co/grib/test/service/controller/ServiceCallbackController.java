@@ -1,5 +1,7 @@
 package kr.co.grib.test.service.controller;
 
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +22,19 @@ public class ServiceCallbackController {
 	@PostMapping("/callback")
 	public void serviceCallback(@RequestBody MqttDto param) {
 		try{
-			MqttDto mqttJson = new MqttDto(param.getToken(), param.getRequest(), param.getParam(), param.getDeviceId());
-
 			ObjectMapper objectMapper = new ObjectMapper();
-			String jsonString = objectMapper.writeValueAsString(mqttJson);
+			String jsonString = objectMapper.writeValueAsString(param);
+			System.out.println(jsonString);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 
+	@PostMapping("/schedule/callback")
+	public void serviceScheduleCallback(@RequestBody Map<String, Object> param) {
+		try{
+			ObjectMapper objectMapper = new ObjectMapper();
+			String jsonString = objectMapper.writeValueAsString(param);
 			System.out.println(jsonString);
 		}catch(Exception e){
 			e.printStackTrace();
