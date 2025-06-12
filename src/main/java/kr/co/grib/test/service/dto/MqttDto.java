@@ -1,5 +1,8 @@
 package kr.co.grib.test.service.dto;
 
+import java.util.List;
+import java.util.Map;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,8 +15,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MqttDto {
-    private String token;
+    private String code;
+    private String message;
     private String request;
-    private String param;
+    private List<Map<String,Object>> param;
     private String deviceId;
 }
