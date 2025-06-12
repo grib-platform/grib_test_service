@@ -31,13 +31,15 @@ public class ServiceCallbackController {
 	}
 
 	@PostMapping("/schedule/callback")
-	public void serviceScheduleCallback(@RequestBody Map<String, Object> param) {
+	public String serviceScheduleCallback(@RequestBody Map<String, Object> param) {
 		try{
 			ObjectMapper objectMapper = new ObjectMapper();
 			String jsonString = objectMapper.writeValueAsString(param);
 			System.out.println(jsonString);
+			return jsonString;
 		}catch(Exception e){
 			e.printStackTrace();
+			return "Error";
 		}
 	}
 }
